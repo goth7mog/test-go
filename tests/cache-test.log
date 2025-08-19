@@ -1,0 +1,9 @@
+--- Cache Test started at 1755595154466 ---
+Request 1st - 1755595154471 - delta: N/A ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 2nd - 1755595155148 - delta: 677 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 3rd - 1755595155190 - delta: 42 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 4th (after 12s) - 1755595167225 - delta: 12035 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 5th - 1755595167441 - delta: 216 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 6th - 1755595167481 - delta: 40 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+Request 7th - 1755595167590 - delta: 109 ms - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
+--- Cache Test finished at 1755595167616 ---
