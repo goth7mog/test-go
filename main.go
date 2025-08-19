@@ -90,24 +90,34 @@ func getBalanceHandler(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request"})
 	}
 	results := make(map[string]uint64)
+	var wg sync.WaitGroup
+	var resultsMutex sync.Mutex
 	for _, wallet := range req.Wallets {
-		mutex := getWalletMutex(wallet)
-		mutex.Lock()
-		if cachedBalance, found := walletCache.Get(wallet); found {
-			results[wallet] = cachedBalance.(uint64)
-			mutex.Unlock()
-			continue
-		}
-		pubKey := solana.MustPublicKeyFromBase58(wallet)
-		balance, err := rpcClient.GetBalance(context.Background(), pubKey, rpc.CommitmentFinalized)
-		if err != nil {
-			results[wallet] = 0
-		} else {
-			results[wallet] = balance.Value
-			walletCache.Set(wallet, balance.Value, cache.DefaultExpiration)
-		}
-		mutex.Unlock()
+		wg.Add(1)
+		go func(wallet string) {
+			defer wg.Done()
+			mutex := getWalletMutex(wallet)
+			mutex.Lock()
+			defer mutex.Unlock()
+			if cachedBalance, found := walletCache.Get(wallet); found {
+				resultsMutex.Lock()
+				results[wallet] = cachedBalance.(uint64)
+				resultsMutex.Unlock()
+				return
+			}
+			pubKey := solana.MustPublicKeyFromBase58(wallet)
+			balance, err := rpcClient.GetBalance(context.Background(), pubKey, rpc.CommitmentFinalized)
+			resultsMutex.Lock()
+			if err != nil {
+				results[wallet] = 0
+			} else {
+				results[wallet] = balance.Value
+				walletCache.Set(wallet, balance.Value, cache.DefaultExpiration)
+			}
+			resultsMutex.Unlock()
+		}(wallet)
 	}
+	wg.Wait()
 	return c.JSON(fiber.Map{"balances": results})
 }
 

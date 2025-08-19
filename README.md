@@ -8,8 +8,11 @@ This project is a Golang REST API (using Fiber) that fetches the Solana balance 
 - Dockerized setup with MongoDB
 
 ## Authentication
-
 For the robust authentication it's recommended to implement JWT with access/refresh tokens going onwards
+
+## Updates
+### main.go
+Added goroutines inside the `getBalanceHandler` function to fetch wallet balances in parallel.
 
 ## Testing
 
