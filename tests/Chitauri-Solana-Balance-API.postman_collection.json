@@ -1,0 +1,105 @@
+{
+    "info": {
+        "_postman_id": "c7e7e7e7-7e7e-4e7e-8e7e-7e7e7e7e7e7e",
+        "name": "Chitauri Solana Balance API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Get Balance - Single Wallet",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-API-Key",
+                        "value": "d3f8a1c2e4b5f6a7d8c9e0b1a2f3c4d5"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"wallets\": [\"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b\"]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/get-balance",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "get-balance"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Balance - Multiple Wallets",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-API-Key",
+                        "value": "a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"wallets\": [\"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b\", \"7BzJk1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw2Qw2\"]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/get-balance",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "get-balance"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Balance - Invalid API Key",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "X-API-Key",
+                        "value": "invalid-key"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"wallets\": [\"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b\"]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/api/get-balance",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "api",
+                        "get-balance"
+                    ]
+                }
+            }
+        }
+    ]
+}
