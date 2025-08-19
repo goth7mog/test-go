@@ -45,7 +45,12 @@ done
 wait
 ```
 
-### 4. Test with invalid API key
+### 4. Test all the above at the same time
+```bash
+	./simultaneous-requests-test.sh
+```
+
+### 5. Test with invalid API key
 ```bash
 curl -X POST http://localhost:8080/api/get-balance \
 	-H "Content-Type: application/json" \
@@ -53,13 +58,18 @@ curl -X POST http://localhost:8080/api/get-balance \
 	-d '{"wallets":["9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b"]}'
 ```
 
-### 5. Test rate limiting (send >10 requests in a minute)
+### 6. Test rate limiting (send >10 requests in a minute)
 ```bash
-for i in {1..12}; do
+for i in {1..20}; do
 	curl -X POST http://localhost:8080/api/get-balance \
 		-H "Content-Type: application/json" \
 		-H "X-API-Key: b2a3c4d5e6f7a8b9c0d1e2f3a4b5c6d7" \
 		-d '{"wallets":["9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b"]}'
 done
+```
+
+### 7. Cache
+```bash
+	./caching_test
 ```
 
