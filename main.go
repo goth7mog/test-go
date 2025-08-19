@@ -10,7 +10,6 @@ import (
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/joho/godotenv"
 	"github.com/patrickmn/go-cache"
 	"go.mongodb.org/mongo-driver/bson"
@@ -131,15 +130,6 @@ func main() {
 	rpcClient = rpc.New(rpcUrl)
 
 	app := fiber.New()
-
-	// IP rate limiting: 10 requests per minute per IP
-	app.Use(limiter.New(limiter.Config{
-		Max:        10,
-		Expiration: 1 * time.Minute,
-		LimitReached: func(c *fiber.Ctx) error {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		},
-	}))
 
 	app.Use(apiKeyAuthMiddleware)
 	app.Post("/api/get-balance", getBalanceHandler)
