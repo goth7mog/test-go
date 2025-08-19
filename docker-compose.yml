@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    container_name: fiber-api-chitauri
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb-chitauri
+    ports:
+      - "27017:27017"
+    volumes:
+      # - mongo-data-chitauri:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  mongo-express:
+    image: mongo-express:1.0.0-20
+    container_name: mongo-express-chitauri
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongo

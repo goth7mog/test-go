@@ -1,0 +1,32 @@
+Infra Dev Trial Task (3 hours)
+
+- Make a Golang Rest API which fetches the Solana balance of a user.
+
+- RPC: https://pomaded-lithotomies-xfbhnqagbt-dedicated.helius-rpc.com/?api-key=37ba4475-8fa3-4491-875f-758894981943
+- Docs on how to get Solana balance of a user: https://github.com/gagliardetto/solana-go?tab=readme-ov-file#index--rpc--getbalance
+
+Requirements
+- IP rate limiting > 10 requests per minute.
+- Each wallet address needs a cache TTL of 10 seconds.
+- If 2 concurrent requests are made for the same wallet address, the second request should wait for the first one to finish and then return the same result. (Mutex & Cache Usage)
+- MongoDB Authentication -> Store Valid API Keys in a Database -> When your endpoint is requested, validate the API key using the database.
+- The API must respond as fast as possible.
+
+Rest API Structure
+
+POST /api/get-balance
+
+```go
+Body = {
+    "wallets": [ARRAY_OF_SOLANA_WALLETS]
+}
+```
+
+Testing - You must show a video of...
+- The rest API working with 1 wallet.
+- The rest API working with multiple wallets.
+- The rest API working with 5 requests using the same wallet.
+- The rest API working with all of the above at the same time.
+- The rest API working with IP rate limiting.
+- The rest API working with caching.
+- Testing authentication and rate limiting.
