@@ -1,17 +1,20 @@
 version: '3.8'
 services:
   nginx:
-    image: nginx:1.25
+    image: nginx:1.26
     ports:
       - "8080:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    container_name: nginx-chitauri
     depends_on:
       - api
 
   api:
     build: .
     container_name: fiber-api-chitauri
+    # ports:
+    # - "8080:8080"
     expose:
       - "8080"
     env_file:
