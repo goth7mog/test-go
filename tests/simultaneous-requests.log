@@ -1,9 +1,9 @@
---- Test started at 1755595304591 ---
-Concurrent request 5 - 1755595304601 (delta 10ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Concurrent request 4 - 1755595304601 (delta 10ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Single Wallet request - 1755595304598 (delta 7ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Multiple Wallets request - 1755595304598 (delta 7ms) - {"balances":{"7BzJk1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw2Qw2":0,"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Concurrent request 3 - 1755595304601 (delta 10ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Concurrent request 2 - 1755595304598 (delta 7ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
-Concurrent request 1 - 1755595304599 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0}}
---- Test finished at 1755595304890 (total duration 299ms) ---
+--- Test started at 1755794229223 ---
+Concurrent request 1 - 1755794229231 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Single Wallet request - 1755794229230 (delta 7ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Concurrent request 4 - 1755794229231 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Concurrent request 3 - 1755794229231 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Multiple Wallets request - 1755794229230 (delta 7ms) - {"balances":{"7BzJk1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw1vQw2Qw2Qw2":0,"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Concurrent request 5 - 1755794229231 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+Concurrent request 2 - 1755794229231 (delta 8ms) - {"balances":{"9xQeWvG816bUx9EPn6bKk6vYjY6i9aF8fF7b7b7b7b7b":0},"errors":{}}
+--- Test finished at 1755794230570 (total duration 1347ms) ---

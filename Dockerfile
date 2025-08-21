@@ -25,7 +25,7 @@ RUN apk --no-cache add ca-certificates
 
 # Copy the built binary and .env file
 COPY --from=builder /app/fiber-api .
-COPY .env .
+# COPY .env .
 
 EXPOSE 8080
 
