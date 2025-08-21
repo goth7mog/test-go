@@ -1,7 +1,3 @@
-// mongo-init.js
-// This script will create the 'chitauri' database and insert 10 random API keys into the 'api_keys' collection.
-
-
 const keys = [
     { key: "d3f8a1c2e4b5f6a7d8c9e0b1a2f3c4d5" },
     { key: "a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4" },
