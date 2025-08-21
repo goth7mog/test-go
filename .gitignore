@@ -1,4 +1,5 @@
-task.txt
+task*.txt
 video.mp4
 .env*
 .DS_Store
+*.pem
