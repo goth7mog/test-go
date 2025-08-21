@@ -15,6 +15,8 @@ For the robust authentication it's recommended to implement JWT with access/refr
 Added goroutines inside the `getBalanceHandler` function to fetch the wallet balances in parallel
 ### Nginx
 Added for IP rate limiting
+### Github Actions
+Added
 
 ## Testing
 

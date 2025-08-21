@@ -35,7 +35,7 @@ var (
 		sync.Mutex
 		m map[string]*sync.Mutex
 	}{m: make(map[string]*sync.Mutex)}
-	apiKeys = make(map[string]bool)
+	ApiKeys = make(map[string]bool)
 )
 
 func getWalletMutex(wallet string) *sync.Mutex {
@@ -66,15 +66,15 @@ func loadAPIKeysFromMongo() {
 			Key string `bson:"key"`
 		}
 		if err := cursor.Decode(&result); err == nil {
-			apiKeys[result.Key] = true
+			ApiKeys[result.Key] = true
 		}
 	}
 	cursor.Close(context.Background())
 }
 
-func apiKeyAuthMiddleware(c *fiber.Ctx) error {
+func ApiKeyAuthMiddleware(c *fiber.Ctx) error {
 	key := c.Get("X-API-Key")
-	if !apiKeys[key] {
+	if !ApiKeys[key] {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"error": "Invalid API key"})
 	}
 	return c.Next()
@@ -147,7 +147,7 @@ func main() {
 		},
 	}))
 
-	app.Use(apiKeyAuthMiddleware)
+	app.Use(ApiKeyAuthMiddleware)
 	app.Post("/api/get-balance", getBalanceHandler)
 	app.Listen(":8080")
 }
