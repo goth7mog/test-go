@@ -89,6 +89,7 @@ func getBalanceHandler(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request"})
 	}
 	results := make(map[string]uint64)
+	errors := make(map[string]map[string]string)
 	var wg sync.WaitGroup
 	var resultsMutex sync.Mutex
 	for _, wallet := range req.Wallets {
@@ -109,6 +110,10 @@ func getBalanceHandler(c *fiber.Ctx) error {
 			resultsMutex.Lock()
 			if err != nil {
 				results[wallet] = 0
+				errors[wallet] = map[string]string{
+					"code":    "RPC_ERROR",
+					"message": "RPC call failed: " + err.Error(),
+				}
 			} else {
 				results[wallet] = balance.Value
 				walletCache.Set(wallet, balance.Value, cache.DefaultExpiration)
@@ -117,7 +122,7 @@ func getBalanceHandler(c *fiber.Ctx) error {
 		}(wallet)
 	}
 	wg.Wait()
-	return c.JSON(fiber.Map{"balances": results})
+	return c.JSON(fiber.Map{"balances": results, "errors": errors})
 }
 
 func main() {
