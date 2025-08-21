@@ -124,9 +124,10 @@ func main() {
 	godotenv.Load()
 	loadAPIKeysFromMongo()
 
-	// Load Solana RPC API key from .env
+	// Load Solana RPC API key and host from .env
 	solanaApiKey := os.Getenv("SOLANA_API_KEY")
-	rpcUrl := "https://pomaded-lithotomies-xfbhnqagbt-dedicated.helius-rpc.com/?api-key=" + solanaApiKey
+	solanaRpcHost := os.Getenv("SOLANA_RPC_HOST")
+	rpcUrl := "https://" + solanaRpcHost + "/?api-key=" + solanaApiKey
 	rpcClient = rpc.New(rpcUrl)
 
 	app := fiber.New()
