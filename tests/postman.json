@@ -1,7 +1,7 @@
 {
     "info": {
         "_postman_id": "c7e7e7e7-7e7e-4e7e-8e7e-7e7e7e7e7e7e",
-        "name": "Chitauri Solana Balance API",
+        "name": "Solana Balance API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [

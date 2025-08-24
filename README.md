@@ -1,4 +1,4 @@
-# Chitauri Solana Balance API
+# Solana Balance API in go
 
 This project is a Golang REST API (using Fiber) that fetches the Solana balance for one or more wallet addresses. It includes:
 - IP rate limiting
